@@ -23,7 +23,7 @@ class LugarPorPaisScreen extends StatelessWidget {
          backgroundColor: pais.cor,
         title: Text(
           "Lugares em ${pais.titulo}",
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: ListView.builder(

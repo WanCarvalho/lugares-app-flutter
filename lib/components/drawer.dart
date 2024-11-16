@@ -13,13 +13,13 @@ class MeuDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: ThemeData().primaryColor,
             ),
-            child: Text(
+            child: const Text(
               'Configurações',
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.category),
+            leading: const Icon(Icons.map_sharp),
             title: const Text('Países'),
             onTap: () {
               //context.pushReplacement('/');
@@ -29,7 +29,17 @@ class MeuDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.engineering),
+            leading: const Icon(Icons.location_on),
+            title: const Text('Lugares'),
+            onTap: () {
+              //context.pushReplacement('/');
+              Navigator.of(context).pushReplacementNamed(
+                '/lugares-manage',
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.engineering),
             title: const Text('Configurações'),
             onTap: () {
               //context.pushReplacement('/configuracoes');
