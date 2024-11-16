@@ -25,7 +25,7 @@ class ItemLugar extends StatelessWidget {
             Stack(children: <Widget>[
               ClipRRect(
                 //bordas na imagem
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(15),
                   topRight: Radius.circular(15),
                 ),
@@ -43,13 +43,13 @@ class ItemLugar extends StatelessWidget {
                 child: Container(
                   width: 300,
                   color: Colors.black54,
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 5,
                     horizontal: 20,
                   ),
                   child: Text(
                     lugar.titulo,
-                    style: TextStyle(fontSize: 26, color: Colors.white),
+                    style: const TextStyle(fontSize: 26, color: Colors.white),
                     softWrap: true, //quebra de lina
                     overflow: TextOverflow.fade, //case de overflow
                   ),
@@ -58,14 +58,14 @@ class ItemLugar extends StatelessWidget {
             ]),
             //Text(place.titulo),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.star),
-                      SizedBox(
+                      const Icon(Icons.star),
+                      const SizedBox(
                         width: 6,
                       ),
                       Text('${lugar.avaliacao}/5')
@@ -73,8 +73,8 @@ class ItemLugar extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
-                      SizedBox(
+                      const Icon(Icons.attach_money),
+                      const SizedBox(
                         width: 6,
                       ),
                       Text('custo: R\$${lugar.custoMedio}')

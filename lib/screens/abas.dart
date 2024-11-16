@@ -1,24 +1,17 @@
 import 'package:f05_lugares_app/components/drawer.dart';
-import 'package:f05_lugares_app/model/lugar.dart';
 import 'package:f05_lugares_app/screens/favoritos.dart';
 import 'package:f05_lugares_app/screens/pais_screen.dart';
 import 'package:flutter/material.dart';
 
 class MinhasAbas extends StatefulWidget {
-  final List<Lugar> listaFavoritos;
-  const MinhasAbas({super.key, required this.listaFavoritos});
-
   @override
   State<MinhasAbas> createState() => _MinhasAbasState();
 }
 
 class _MinhasAbasState extends State<MinhasAbas> {
-
- 
-
   @override
   Widget build(BuildContext context) {
-    return MinhasAbasBottom(lugaresFavoritos: widget.listaFavoritos);
+    return MinhasAbasBottom();
   }
 }
 
@@ -68,9 +61,6 @@ class _MinhasAbasState extends State<MinhasAbas> {
 } */
 
 class MinhasAbasBottom extends StatefulWidget {
-  final List<Lugar> lugaresFavoritos;
-  MinhasAbasBottom({super.key, required this.lugaresFavoritos});
-
   @override
   State<MinhasAbasBottom> createState() => _MinhasAbasBottomState();
 }
@@ -88,54 +78,56 @@ class _MinhasAbasBottomState extends State<MinhasAbasBottom> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                "${_nomeTab.toString()}",
-                style: TextStyle(color: Colors.white),
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "${_nomeTab.toString()}",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: ThemeData().primaryColor,
+        ),
+        drawer: MeuDrawer(),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+              child: TabBarView(
+                children: [
+                  PaisScreen(),
+                  FavoritosScreen(),
+                ],
               ),
-              backgroundColor: ThemeData().primaryColor,
             ),
-            drawer: MeuDrawer(),
-            body: Column(
-              children: <Widget>[
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      PaisScreen(),
-                      FavoritosScreen(lugaresFavoritos: widget.lugaresFavoritos,),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                  decoration: BoxDecoration(
-                    color: ThemeData().primaryColor,
-                  ),
-                  child: TabBar(
-                      onTap: (index) {
-                        _getNomeTab(index);
-                      },
-                      indicatorColor: Colors.amber,
-                      labelColor: Colors.amber,
-                      unselectedLabelColor: Colors.white60,
-                      tabs: const [
-                        Tab(
-                          icon: Icon(
-                            Icons.category,
-                          ),
-                          text: "Países",
-                        ),
-                        Tab(
-                          icon: Icon(
-                            Icons.star,
-                          ),
-                          text: "Favoritos",
-                        )
-                      ]),
-                )
-              ],
-            )));
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+              decoration: BoxDecoration(
+                color: ThemeData().primaryColor,
+              ),
+              child: TabBar(
+                  onTap: (index) {
+                    _getNomeTab(index);
+                  },
+                  indicatorColor: Colors.amber,
+                  labelColor: Colors.amber,
+                  unselectedLabelColor: Colors.white60,
+                  tabs: const [
+                    Tab(
+                      icon: Icon(
+                        Icons.category,
+                      ),
+                      text: "Países",
+                    ),
+                    Tab(
+                      icon: Icon(
+                        Icons.star,
+                      ),
+                      text: "Favoritos",
+                    )
+                  ]),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,12 +1,18 @@
-import 'package:f05_lugares_app/model/lugar.dart';
+import 'package:f05_lugares_app/providers/lugares_favoritos.dart';
 import 'package:f05_lugares_app/screens/abas.dart';
 import 'package:f05_lugares_app/screens/configuracoes.dart';
 import 'package:f05_lugares_app/screens/detalhes_lugar.dart';
 import 'package:f05_lugares_app/screens/lugares_por_pais.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MeuApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LugaresFavoritosProvider(),
+      child: MeuApp(),
+    ),
+  );
 }
 
 class MeuApp extends StatefulWidget {
@@ -17,26 +23,14 @@ class MeuApp extends StatefulWidget {
 }
 
 class _MeuAppState extends State<MeuApp> {
-  final List<Lugar> _lugaresFavoritos = [];
-
-  void toggleLugarFavorito(Lugar place) {
-    setState(() {
-      _lugaresFavoritos.contains(place)
-          ? _lugaresFavoritos.remove(place)
-          : _lugaresFavoritos.add(place);
-    });
-  }
-
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (ctx) => MinhasAbas(listaFavoritos: _lugaresFavoritos,),
+        '/': (ctx) => MinhasAbas(),
         '/lugaresPorPais': (ctx) => LugarPorPaisScreen(),
-        '/detalheLugar': (ctx) => DetalhesLugarScreen(onToggle: toggleLugarFavorito),
+        '/detalheLugar': (ctx) => DetalhesLugarScreen(),
         '/configuracoes': (ctx) => ConfigracoesScreen(),
       },
     );

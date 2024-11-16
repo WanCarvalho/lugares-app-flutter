@@ -1,17 +1,17 @@
 import 'package:f05_lugares_app/model/lugar.dart';
+import 'package:f05_lugares_app/providers/lugares_favoritos.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetalhesLugarScreen extends StatelessWidget {
-  const DetalhesLugarScreen({super.key, required this.onToggle});
-
-  final void Function(Lugar) onToggle;
-
   @override
   Widget build(BuildContext context) {
-
     final lugar = ModalRoute.of(context)?.settings.arguments as Lugar;
+    final favoritosProvider = Provider.of<LugaresFavoritosProvider>(context); 
+    final isFavorito = favoritosProvider.isFavorito(lugar);
+
     void _favoritarLugar() {
-      onToggle(lugar);
+      favoritosProvider.toggleFavorito(lugar);
     }
 
     return Scaffold(
@@ -19,7 +19,7 @@ class DetalhesLugarScreen extends StatelessWidget {
         backgroundColor: ThemeData().primaryColor,
         title: Text(
           lugar.titulo,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
@@ -74,7 +74,7 @@ class DetalhesLugarScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _favoritarLugar,
-        child: Icon(Icons.star_border),
+        child: Icon(isFavorito ? Icons.star : Icons.star_border),
       ),
     );
   }
