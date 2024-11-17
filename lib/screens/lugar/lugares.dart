@@ -1,7 +1,5 @@
 import 'package:f05_lugares_app/components/drawer.dart';
 import 'package:f05_lugares_app/components/item_lugar.dart';
-import 'package:f05_lugares_app/model/lugar.dart';
-import 'package:f05_lugares_app/data/dados.dart';
 import 'package:f05_lugares_app/providers/lugares.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
