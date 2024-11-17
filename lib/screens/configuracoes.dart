@@ -8,14 +8,14 @@ class ConfigracoesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Configurações",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: ThemeData().primaryColor,
       ),
-      drawer: MeuDrawer(),
-      body: Center(
+      drawer: const MeuDrawer(),
+      body: const Center(
         child: Text(
           "Configurações",
           style: TextStyle(fontSize: 20),
