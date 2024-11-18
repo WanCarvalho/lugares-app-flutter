@@ -38,7 +38,7 @@ class _LugaresForm extends State<LugaresForm> {
     final id = idController.text;
     final paises = paisesController.text.split(',');
     final titulo = tituloController.text;
-    final imagemUrl = imagemUrlController.text;
+    const imagemUrl = 'https://picsum.photos/200';
     final recomendacoes =
         recomendacoesController.text.split(','); // Separar por vírgula
     final avaliacao = double.tryParse(avaliacaoController.text) ??
