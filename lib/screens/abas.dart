@@ -1,6 +1,6 @@
 import 'package:f05_lugares_app/components/drawer.dart';
 import 'package:f05_lugares_app/screens/favoritos.dart';
-import 'package:f05_lugares_app/screens/pais_screen.dart';
+import 'package:f05_lugares_app/screens/paises/pais_screen.dart';
 import 'package:flutter/material.dart';
 
 class MinhasAbas extends StatefulWidget {
@@ -80,13 +80,13 @@ class _MinhasAbasBottomState extends State<MinhasAbasBottom> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "${_nomeTab.toString()}",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: ThemeData().primaryColor,
-        ),
+        // appBar: AppBar(
+        //   title: Text(
+        //     "${_nomeTab.toString()}",
+        //     style: TextStyle(color: Colors.white),
+        //   ),
+        //   backgroundColor: ThemeData().primaryColor,
+        // ),
         drawer: MeuDrawer(),
         body: Column(
           children: <Widget>[
